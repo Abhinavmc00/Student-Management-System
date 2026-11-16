@@ -1,0 +1,130 @@
+# user creation
+###
+POST http://127.0.0.1:8000/user/
+Content-Type: application/json
+
+{
+    "username":"xyz",
+    "email":"xyz@gmail.com",
+    "password":"pass123"
+}
+
+
+# token gerneration
+###
+POST http://127.0.0.1:8000/token/
+Content-Type: application/json
+
+
+{
+    "username":"xyz",
+    "password":"pass123"
+}
+
+
+###
+@token=75140644ac7311968ed3fb60d97ce6bcd764f682
+
+
+
+
+
+# student registration
+###
+POST http://127.0.0.1:8000/studs/
+Content-Type: application/json
+
+{
+    "name":"abcd",
+    "email":"abcd@gmail.com",
+    "phone":"9539986633",
+    "course":"python",
+    "fees":"20000"
+}
+
+
+
+###
+POST http://127.0.0.1:8000/studs/
+Content-Type: application/json
+
+{
+    "name":"xyz",
+    "email":"xyz@gmail.com",
+    "phone":"9539986633",
+    "course":"java"
+}
+
+
+# students listing
+###
+GET  http://127.0.0.1:8000/studdata/
+Content-Type: application/json
+Authorization: token {{token}}
+
+
+# stud detail updations
+
+###
+GET  http://127.0.0.1:8000/studupdate/1/
+Content-Type: application/json
+Authorization: token {{token}}
+
+
+
+###
+put http://127.0.0.1:8000/studupdate/1/
+Content-Type: application/json
+Authorization: token {{token}}
+
+{
+  "id": 1,
+  "name": "abcd",
+  "email": "abcd@gmail.com",
+  "phone": "9539986633",
+  "course": "django",
+  "fees": "20000.00",
+  "joining_date": "2027-10-29"
+}
+
+
+
+
+###
+PATCH  http://127.0.0.1:8000/studupdate/1/
+Content-Type: application/json
+Authorization: token {{token}}
+
+{
+    "course": "python"
+}
+
+
+###
+DELETE http://127.0.0.1:8000/studupdate/2/
+Content-Type: application/json
+Authorization: token {{token}}
+
+
+
+# searching
+###
+GET  http://127.0.0.1:8000/studdata/?name=abcd
+Content-Type: application/json
+Authorization: token {{token}}
+
+
+
+# searching
+###
+GET  http://127.0.0.1:8000/studdata/?course=python
+Content-Type: application/json
+Authorization: token {{token}}
+
+
+# ordering
+
+###
+GET  http://127.0.0.1:8000/studdata/?ordering=fees
+Content-Type: application/json
+Authorization: token {{token}}
